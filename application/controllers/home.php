@@ -81,22 +81,26 @@ class Home extends CI_Controller {
 		echo json_encode($linksArray);
 	}	
 
-	function getAcademicDivisionsUniqueList()
+	function getAcademicDivisions()
 	{	
-		return $this->getUniqueCategoryList($this->link->getAcademicDivision());
+		$categories = $this->link->getAcademicDivisions();
+		return $this->getUniqueCategoryList($categories);
 	}
 	
-	function getLearningAspirationUniqueList()
+	function getLearningAspirations()
 	{
-		return $this->getUniqueCategoryList($this->link->getLearningAspirations());
+		$categories = $this->link->getLearningAspirations();
+		return $this->getUniqueCategoryList($categories);
 	}
 	
-	function getFutureAspirationsUniqueList()
+	function getFutureAspirations()
 	{
-		return $this->getUniqueCategoryList($this->link->getFutureAspirations());
+		$categories = $this->link->getFutureAspirations();
+		return $this->getUniqueCategoryList($categories);
 	}
 
-	function getUniqueCategoryList($responseList) {
+	function getUniqueCategoryList($responseList) 
+	{
 		$categoryArray = array();
 		if (empty($responseList)) 
 		{
@@ -117,15 +121,17 @@ class Home extends CI_Controller {
 			}
 		}
 			
-		return natcasesort(array_unique($categoryArray));
+		$categoryArray = array_unique($categoryArray);
+		natcasesort($categoryArray);
+
+		return $categoryArray;
 	}
 	
 	function index()
 	{
-		$data['academicDivisions'] = $this->getAcademicDivisionsUniqueList();
-		$data['learningAspirations'] = $this->getLearningAspirationUniqueList();
-		$data['futureAspirations'] = $this->getFutureAspirationsUniqueList();
-		
+		$data['academicDivisions'] = $this->getAcademicDivisions();
+		$data['learningAspirations'] = $this->getLearningAspirations();
+		$data['futureAspirations'] = $this->getFutureAspirations();
 		
 		$this->load->view('home_view', $data);
 	}
