@@ -63,7 +63,7 @@ class Home extends CI_Controller {
 									$link->score = $link->score + 1;
 							}
 						}
-	
+
 					}
 				}
 			}
@@ -81,86 +81,57 @@ class Home extends CI_Controller {
 		echo json_encode($linksArray);
 	}	
 
-	function getAcademicDivisionsUniqueList()
+	function getAcademicDivisions()
 	{	
-		$responseList = $this->link->getAcademicDivisions();
-		
-		$categoryArray = array();
-		
-		if (empty($responseList))
-			$categoryArray;
-			
-		foreach ($responseList as $response)
-		{
-			$responseElementArray = json_decode($response->academicDivisions);
-			
-			if (empty($responseElementArray))
-				continue;
-
-
-			foreach ($responseElementArray as $element)
-				array_push($categoryArray, $element);
-		}
-		
-		
-		return array_unique($categoryArray);
+		$categories = $this->link->getAcademicDivisions();
+		return $this->getUniqueCategoryList($categories);
 	}
 	
-	function getLearningAspirationUniqueList()
+	function getLearningAspirations()
 	{
-		$responseList = $this->link->getLearningAspirations();
-		
-		$categoryArray = array();
-		
-		if (empty($responseList))
-			$categoryArray;
-			
-		foreach ($responseList as $response)
-		{
-			$responseElementArray = json_decode($response->learningAspirations);
-			
-			if (empty($responseElementArray))
-				continue;
-				
-			foreach ($responseElementArray as $element)
-				array_push($categoryArray, $element);
-		}
-		
-		
-		return array_unique($categoryArray);
+		$categories = $this->link->getLearningAspirations();
+		return $this->getUniqueCategoryList($categories);
 	}
 	
-	function getFutureAspirationsUniqueList()
+	function getFutureAspirations()
 	{
-		$responseList = $this->link->getFutureAspirations();
-		
-		$categoryArray = array();
-		
-		if (empty($responseList))
-			$categoryArray;
+		$categories = $this->link->getFutureAspirations();
+		return $this->getUniqueCategoryList($categories);
+	}
 
+	function getUniqueCategoryList($responseList) 
+	{
+		$categoryArray = array();
+		if (empty($responseList)) 
+		{
+			return $categoryArray;
+		}
 
 		foreach ($responseList as $response)
 		{
-			$responseElementArray = json_decode($response->futureAspirations);
-			
-			if (empty($responseElementArray))
+			$responseElementArray = json_decode($response->category);
+			if (empty($responseElementArray)) 
+			{
 				continue;
-
-			foreach ($responseElementArray as $element)
-				array_push($categoryArray, $element);
+			}
+			
+			foreach ($responseElementArray as $element) 
+			{
+				$categoryArray[] = $element;
+			}
 		}
-		
-		
-		return array_unique($categoryArray);
+			
+		$categoryArray = array_unique($categoryArray);
+		natcasesort($categoryArray);
+
+		return $categoryArray;
 	}
 	
 	function index()
 	{
-		$data['academicDivisions'] = $this->getAcademicDivisionsUniqueList();
-		$data['learningAspirations'] = $this->getLearningAspirationUniqueList();
-		$data['futureAspirations'] = $this->getFutureAspirationsUniqueList();
-		
+		$data['academicDivisions'] = $this->getAcademicDivisions();
+		$data['learningAspirations'] = $this->getLearningAspirations();
+		$data['futureAspirations'] = $this->getFutureAspirations();
 		
 		$this->load->view('home_view', $data);
 	}

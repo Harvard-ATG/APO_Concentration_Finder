@@ -65,7 +65,7 @@ Class Link extends CI_Model
 	
 	function getAcademicDivisions()
 	{
-		$sql = "SELECT DISTINCT `academicDivisions` FROM links";
+		$sql = "SELECT DISTINCT `academicDivisions` AS category FROM links";
 		$query = $this->db->query($sql);
 		
 		return $query->result();
@@ -73,7 +73,7 @@ Class Link extends CI_Model
 	
 	function getLearningAspirations()
 	{
-		$sql = "SELECT DISTINCT `learningAspirations` FROM links";
+		$sql = "SELECT DISTINCT `learningAspirations` AS category FROM links";
 		$query = $this->db->query($sql);
 		
 		return $query->result();
@@ -81,7 +81,7 @@ Class Link extends CI_Model
 	
 	function getFutureAspirations()
 	{
-		$sql = "SELECT DISTINCT `futureAspirations` FROM links";
+		$sql = "SELECT DISTINCT `futureAspirations` AS category FROM links";
 		$query = $this->db->query($sql);
 		
 		return $query->result();
