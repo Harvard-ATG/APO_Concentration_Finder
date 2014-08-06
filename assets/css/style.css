@@ -50,7 +50,7 @@ ul.cat2 input {
 ul.cat2 input+span {
 	float: left;
 	text-align: left;
-	width: 165px;
+	width: 160px;
 }
 #resultsWrapper {
 	position: absolute;

@@ -34,7 +34,7 @@
 		<?php 
 		$divisions = array(
 			array(
-				'title' => 'Academic Dvisions', 
+				'title' => 'Academic Divisions', 
 				'items' => $academicDivisions,
 				'cat1_id' => 'cat1Divisions', 
 				'cat2_id' => 'cat2Divisions'
