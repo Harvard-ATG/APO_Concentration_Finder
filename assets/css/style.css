@@ -1,9 +1,13 @@
 body{
-	font-family: 'Arimo', sans-serif;
-	background-color: #323232 !important;
+	/* NOTE: Commented below styles to match apo.fas.harvard.edu -abarrett 11/18/14 */
+	/* font-family: 'Arimo', sans-serif; */
+	/* background-color: #323232 !important; */
+	font-family: andale mono,times;
+	background-color: #ffffff;
 }
 
 .header {
+	display: none; /* NOTE: Added this to hide the header for apo.fas.harvard.edu -abarrett 11/18/14 */
 	margin-bottom: 20px;
 }
 
@@ -62,7 +66,7 @@ ul.cat2 input+span {
 #results{
 	overflow-y: auto;
 	margin-bottom: 20px;
-    background:#E8E8E8;
+    /* background:#E8E8E8; */ /* NOTE: Commented out to match apo.fas.harvard.edu -abarrett 11/18/14 */
     height:600px;
 }
 
@@ -118,3 +122,25 @@ hr {
 	font-weight: bold;
 }
 
+/* NOTE: Added below ANCHOR styles to match apo.fas.harvard.edu -abarrett 11/18/14 */
+a {
+	color: #992440;
+}
+a:hover {
+	color: #9C8940;
+	text-decoration: none;
+}
+
+/* NOTE: Overriding jqueryui widget style to match apo.fas.harvard.edu -abarrett 11/18/14 */
+.ui-state-default { background: none !important; }
+.ui-corner-all { 
+	border-radius: 0 !important; 
+}
+.ui-corner-top {
+	border-top-right-radius: 0 !important; 
+	border-top-left-radius: 0 !important; 
+}
+.ui-corner-bottom {
+	border-bottom-left-radius: 0 !important; 
+	border-bottom-right-radius: 0 !important; 
+}

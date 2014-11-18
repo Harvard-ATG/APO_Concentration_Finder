@@ -5,7 +5,6 @@
 <head>
 	<title>APO Concentration Search (alpha)</title>
 	<link href='//fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="<?php echo asset_url() . 'css/style.css';?>">
 	<!-- jQuery CDN  -->
 	<script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -22,7 +21,8 @@
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
-	
+
+	<link rel="stylesheet" type="text/css" href="<?php echo asset_url() . 'css/style.css';?>">
 </head>
 
 <body>
